@@ -16,6 +16,10 @@ class _CardTestingState extends State<CardTesting> {
     'D',
     'E',
     'F',
+    'G',
+    'H',
+    'I',
+    'J',
   ];
 
   @override
