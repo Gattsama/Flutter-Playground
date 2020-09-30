@@ -1,21 +1,36 @@
 import 'package:flutter/material.dart';
 
-class A extends StatefulWidget {
-  @override
-  _AState createState() => _AState();
-}
+class A extends StatelessWidget {
+  final String pagename;
+  A({this.pagename});
 
-class _AState extends State<A> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return MaterialApp(
+      home: Scaffold(
         backgroundColor: Colors.red,
-        title: Text('A'),
-      ),
-      body: Text(
-        'A',
-        style: TextStyle(fontSize: 48, color: Colors.white),
+        appBar: AppBar(
+          title: Text(pagename),
+        ),
+        body: Column(
+          children: [
+            FloatingActionButton(
+                elevation: 2,
+                backgroundColor: Colors.green,
+                hoverColor: Colors.yellow,
+                child: Icon(
+                  Icons.arrow_left,
+                  size: 50,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+            Text(
+              '$pagename in the house',
+              style: TextStyle(fontSize: 100, color: Colors.white),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'Screens/A.dart';
 
-void main() => runApp(CardTesting());
+void main() => runApp(MyHome());
+
+class MyHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: CardTesting(),
+    );
+  }
+}
 
 class CardTesting extends StatefulWidget {
   @override
@@ -30,6 +39,10 @@ class _CardTestingState extends State<CardTesting> {
           title: Text('Reoderable Card Testing'),
         ),
         body: ReorderableListView(
+          header: Text(
+            'LOGO HERE',
+            style: TextStyle(fontSize: 60),
+          ),
           children: <Widget>[
             for (final item in letters)
               Card(
@@ -40,10 +53,16 @@ class _CardTestingState extends State<CardTesting> {
                   title: Text(item),
                   onTap: () {
                     print(item);
-                    // Navigator.push(   todo figure out how to navigator to a new page called items, look at net ninja flutter animation app
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => A()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => A(
+                          pagename: item,
+                        ),
+                      ),
+                      // Navigator.push(context,
+                      //   MaterialPageRoute(builder: (context) => Details(trip: trip)));
+                    );
                   },
                 ),
               )
